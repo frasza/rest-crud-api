@@ -1,6 +1,8 @@
 package database
 
 import (
+	"crud-rest-api/src/model"
+
 	"github.com/glebarez/sqlite"
 	"gorm.io/gorm"
 )
@@ -13,6 +15,8 @@ func Init() {
 	if err != nil {
 		panic("Could not connect to DB. Panic time!")
 	}
+
+	db.AutoMigrate(&model.User{})
 }
 
 func DatabaseManager() *gorm.DB {
